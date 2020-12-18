@@ -1,0 +1,10 @@
+ewz_recaptcha:
+    public_key: '%env(EWZ_RECAPTCHA_SITE_KEY)%'
+    private_key: '%env(EWZ_RECAPTCHA_SECRET)%'
+    locale_from_request: true
+    enabled: true
+#    verify_host: true
+    verify_host: false
+    ajax: false
+    version: 2
+

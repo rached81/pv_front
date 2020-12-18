@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consultation !{% endblock %}
+
+{% block body %}
+{#    <div id="recaptcha-container"></div>#}
+{#    <script type="text/javascript">#}
+{#        $(document).ready(function() {#}
+{#            $.getScript("{{ constant('\\EWZ\\Bundle\\RecaptchaBundle\\Form\\Type\\EWZRecaptchaType::RECAPTCHA_API_JS_SERVER') }}", function() {#}
+{#                Recaptcha.create("{{ form.recaptcha.get('public_key') }}", "recaptcha-container", {#}
+{#                    theme: "clean"#}
+{#                });#}
+{#            });#}
+{#        });#}
+{#    </script>#}
+{#    <div class="form-control">#}
+{#        <i class="fa fa-calendar"></i> {{ form_label(form.dueDate) }}#}
+{#        {{ form_widget(form.dueDate) }}#}
+{#        <small>{{ form_help(form.dueDate) }}</small>#}
+{#        <div class="form-error">#}
+{#            {{ form_errors(form.dueDate) }}#}
+{#        </div>#}
+{#    </div>#}
+
+    {{ form_start(form) }}
+<div class="box_penalite">
+    <h3>Mes critères de recherche</h3>
+    <div class="option_">
+    {{ form_row(form.identifyType) }}
+    </div>
+    </div>
+    <div class="clear30"></div>
+    <div class="box_penalite">
+        <h3>Mes références</h3>
+        <table>
+            <tbody><tr>
+                <th><label>Carte d'identité nationale :</label></th>
+                <td>
+                    {{ form_row(form.identify) }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        {% form_theme form '@EWZRecaptcha/Form/ewz_recaptcha_widget.html.twig' %}
+
+        {{ form_widget(form.recaptcha, { 'attr': {
+            'options' : {
+                'theme': 'light',
+                'type': 'image',
+                'size': 'normal'
+            },
+        } }) }}
+        <div class="btn_submit">
+            <button name="page" value="1" type="submit">Valider</button>
+        </div>
+    </div>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+{#    <form action="" method="post" id="searchPenalties" name="search_penalties" >#}
+{#        <div class="box_penalite">#}
+{#            <h3>Mes critères de recherche</h3>#}
+{#            <div class="option_">#}
+{#                <input name="search_penalties[identifyType]" type="radio" value="1" id="penalties_identify_type_1" checked="checked" class=" "><label for="penalties_identify_type_1">CIN</label>#}
+{#                <input name="search_penalties[identifyType]" type="radio" value="2" id="penalties_identify_type_2" class=" "><label for="penalties_identify_type_2">Carte de séjour</label></div>                </div>#}
+{#        <div class="clear30"></div>#}
+{#        <div class="box_penalite">#}
+{#            <h3>Mes références</h3>#}
+{#            <table>#}
+{#                <tbody><tr>#}
+{#                    <th><label>Carte d'identité nationale :</label></th>#}
+{#                    <td><input type="text" name="search_penalties[identify]"  id="search_penalties_identify"> </td>#}
+{#                </tr>#}
+{#                </tbody></table>#}
+{#            <div class="btn_submit">#}
+{#              <button name="page" value="1" type="submit">Valider</button>#}
+{#            </div>#}
+{#        </div>#}
+{#    </form>#}
+{% endblock %}
