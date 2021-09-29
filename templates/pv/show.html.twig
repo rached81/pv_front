@@ -1,8 +1,69 @@
 {% extends 'base.html.twig' %}
 {% block title %}Consultation!{% endblock %}
     {% block body %}
-        {{ dump(content) }}
-        <div class="row">
-            <a href="{{ path('pv') }}"> Retour</a>
-        </div>
+
+<div class="row">
+<div class="col-4">
+<div class="card text-left">
+  <div class="card-header">
+    {# <div class= "row"> #}
+    <ul class="list-group list-group-flush  " >
+        <li  class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+                <h6 class="my-0">Numéro CIN</h6>
+                <small class="text-muted">ou Carte de Séjour</small>
+            </div>
+            <p>{{content.numCIN}}</p>
+        </li>
+        <li  class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+                <h6 class="my-0">Nombre des pénalités </h6>
+                <small class="text-muted"> non payer</small>
+            </div>
+            <p>{{content.numberPenaltiesUnpaid}}</p>
+        </li>
+        
+    </ul>
+    {# </div> #}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Détail : </h5>
+     
+    <p class="card-text"> 
+        <ul class="list-group list-group-flush" >
+         <li  class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+                <strong class="my-0">Date de pénalité</strong>
+                
+            </div>
+            <strong>Montant</strong>
+        </li>
+            {% for penalty in content.penalties %}
+            <li  class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0">{{penalty.datePenalty}}</h6>
+                </div>
+                <span>{{penalty.amountPenaty}}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </p>
+    
+  </div>
+  <div class="card-footer ">
+    <div>
+        <ul class="list-group list-group-flush" >
+          <li  class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+                <strong>Total des pénalités non payer</strong>
+                
+            </div>
+            <strong>{{content.totalAmountPenalties}}</strong>
+        </li>
+        </ul>
+  </div>
+</div>
+</div>
+</div>
+        
     {% endblock %}

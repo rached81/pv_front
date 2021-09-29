@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class PvController extends AbstractController
 {
@@ -18,41 +19,55 @@ class PvController extends AbstractController
         $this->httpClient = $client;
     }
     /**
-     * @Route("/pv", name="pv", methods={"POST", "GET"})
+     * @Route("/penalties", name="pv", methods={"POST", "GET"})
      */
     public function index(Request $request): Response
     {
         $paramSearch = new SearchPenalties();
         $form = $this->createForm(SearchPenaltiesType::class, $paramSearch);
-//        $form->handleRequest($request);
-        if($form->isSubmitted()){
-            if($form->isValid()){
-    //            $responsegithube = $this->httpClient->request(
-                    $responsePv = $this->httpClient->request(
-                        'GET',
-                        'https://api.github.com/repos/symfony/symfony-docs'
-                    );
-    //        $responsePv = $this->httpClient->request(
-    //            'GET',
-    //            'http://10.0.2.2:8282/agent/19684'
-    //        );
-                $statusCode = $responsePv->getStatusCode();
-                // $statusCode = 200
-                $contentType = $responsePv->getHeaders()['content-type'][0];
-                // $contentType = 'application/json'
-                $content = $responsePv->getContent();
-                // $content = '{"id":521583, "name":"symfony-docs", ...}'
-    //        $content = $responsePv->toArray();
-                // $content = ['id' => 521583, 'name' => 'symfony-docs', ...]
-                return $this->render('pv/show.html.twig', [
-                    'content'=> $content
-                ]);
-                return $this->render('pv/show.html.twig', [
-                    'content'=> $content
+       $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+            $identity = $data->getIdentify();
+            $identityType = $data->getIdentifyType();
+            $url = 'http://127.0.0.1:8181/api/penalite/ncin/'.$identity;
+
+                    try{
+                        $responsePv = $this->httpClient->request(
+                            'GET',
+                            $url
+                        );
+                        
+                    } catch(Exception $e){
+                        echo $e->getMessage();
+                    }
+            
+                    $statusCode = $responsePv->getStatusCode();
+                if($statusCode == 200){
+                    // $statusCode = 200
+                    $contentType = $responsePv->getHeaders()['content-type'][0];
+                    // $contentType = 'application/json'
+                    $content = $responsePv->getContent();
+                    $content = $responsePv->toArray();
+                
+                    return $this->render('pv/show-table.html.twig', [
+                        'content'=> $content
                 ]);
 
-            }
+                }else{
+                $this->addFlash(
+                   'warning',
+                   'Nous sommes désolés, cette page est momentanément indisponible.'
+                );
+                    return $this->render('pv/index.html.twig', [
+                        'form' => $form->createView(),
+                    ]);
+
+
+                }
         }
+       
 
         return $this->render('pv/index.html.twig', [
             'form' => $form->createView(),

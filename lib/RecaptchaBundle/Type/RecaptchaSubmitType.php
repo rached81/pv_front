@@ -8,12 +8,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RecaptchaSubmitType extends AbstractType {
 
-//    public function configureOptions(OptionsResolver $resolver)
-//    {
-//        $resolver->setDefault([
-//            'mapped' => false
-//        ]);
-//    }
+    public function configureOptions(OptionsResolverI $resolver)
+    {
+        $resolver->setDefault([
+            'mapped' => false
+        ]);
+    }
 
     public function getBlockPrefix()
     {
