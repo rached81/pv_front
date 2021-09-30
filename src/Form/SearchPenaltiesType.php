@@ -3,26 +3,19 @@
 namespace App\Form;
 
 use App\Entity\SearchPenalties;
-// use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
-// use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrueV3;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
-use Transtu\RecaptchaBundle\Type\RecaptchaSubmitType;
 
 class SearchPenaltiesType extends AbstractType
 {
-    /** @var FormBuilderInterface */
-    private $recaptcha;
 
-//    public function __construct(?FormBuilderInterface $recaptcha)
-//    {
-//        $this->recaptcha = $recaptcha;
-//    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -35,24 +28,16 @@ class SearchPenaltiesType extends AbstractType
             ->add('identify', TextType::class, [ 'attr' => ['pattern' => '^[0-9]{8}', 'placeholder' => ' 8 chiffres'], 'label' => false, 
                 'required' => true,]
                 )
-//             ->add('recaptcha', EWZRecaptchaType::class, array(
-//                 'constraints' => array(
-//                     new IsTrueV3()
-//                 ),
-// //                'action_name' => 'form',
-//                 'attr' => array(
-//                     'options' => array(
-//                         'theme' => 'light',
-//                         'type'  => 'image',
-//                         'size'  => 'normal',
-//                         'defer' => true,
-//                         'async' => true,
-//                     )
-//                 )
-            // ))
-            ;
-//            ->add('captcha', RecaptchaSubmitType::class, [ 'label'=>'Envoyer'])        ;
-        ;
+            ->add('captcha', Recaptcha3Type::class, [
+                    // 'constraints' => new Recaptcha3(['message' => ' Please try again or contact with support and provide following code(s): {{ errorCodes }}']),
+                    'constraints' => new Recaptcha3(),
+                 
+                    'action_name' => 'pv',
+                    // 'script_nonce_csp' => $nonceCSP,
+                ])
+                
+                ;
+ 
     }
 
     public function configureOptions(OptionsResolver $resolver)

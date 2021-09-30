@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3Validator;
 
 class PvController extends AbstractController
 {
@@ -23,11 +24,16 @@ class PvController extends AbstractController
      */
     public function index(Request $request): Response
     {
+
+        // phpinfo();
+        // die;
         $paramSearch = new SearchPenalties();
         $form = $this->createForm(SearchPenaltiesType::class, $paramSearch);
        $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            $score = $recaptcha3Validator->getLastResponse()->getScore();
+            dump($score);
             $data = $form->getData();
             $identity = $data->getIdentify();
             $identityType = $data->getIdentifyType();
