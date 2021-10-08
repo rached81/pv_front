@@ -1,3 +1,8 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+pv:    
+    path: /{locale}/penalties
+    controller: App\Controller\PvController::index
+    requirements:
+    locale: fr|ar|en
+
+#    prefix:   /{_locale}
+# defaults: { _locale: fr}

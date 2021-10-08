@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3Validator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PvController extends AbstractController
 {
@@ -19,25 +20,38 @@ class PvController extends AbstractController
     {
         $this->httpClient = $client;
     }
-    /**
-     * @Route("/penalties", name="pv", methods={"POST", "GET"})
+    // /**
+    //  * @Route("/penalties", name="pv", methods={"POST", "GET"})
+    //  */
+
+     /**
+     * @Route(
+     *     "/{locale}/penalties",
+     *     name="pv",
+     *     requirements={
+     *         "locale": "fr|ar|en",
+     *     },
+     *     methods={"POST", "GET"}
+     * )
      */
-    public function index(Request $request): Response
+    public function index($locale, Request $request, TranslatorInterface $translator): Response
     {
 
+dump($locale); 
         // phpinfo();
         // die;
+    //    $request->setlocale($locale);
         $paramSearch = new SearchPenalties();
         $form = $this->createForm(SearchPenaltiesType::class, $paramSearch);
        $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $score = $recaptcha3Validator->getLastResponse()->getScore();
-            dump($score);
+            // $score = $recaptcha3Validator->getLastResponse()->getScore();
+            // dump($score);
             $data = $form->getData();
             $identity = $data->getIdentify();
             $identityType = $data->getIdentifyType();
-            $url = 'http://127.0.0.1:8181/api/penalite/ncin/'.$identity;
+            $url = 'http://127.0.0.1:8080/api/penalite/ncin/'.$identity;
 
                     try{
                         $responsePv = $this->httpClient->request(

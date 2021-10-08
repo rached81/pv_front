@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Consultation !{% endblock %}
+{% block title %}{% trans %}Consultation !{% endtrans %}{% endblock %}
 
 {% block body %}
 {#    <div id="recaptcha-container"></div>#}
@@ -97,7 +97,7 @@ legend.col-form-label {
     <div class="box_penalite">
         <table>
             <tbody><tr>
-                <th><label>Carte d'identité nationale :</label></th>
+                <th><label>{% trans %}Carte d'identité nationale{% endtrans %}</label></th>
                 <td>
                     {{ form_row(form.identify) }}
                 </td>
@@ -117,7 +117,7 @@ legend.col-form-label {
         } }) }}
         #}
         <div class="btn_submit">
-            <button name="page" class="btn btn-sm btn-primary" value="1" type="submit">Valider</button>
+            <button name="page" class="btn btn-sm btn-primary" value="1" type="submit">{% trans %}Valider{% endtrans %}</button>
         </div>
     </div>
     {{ form_rest(form) }}
