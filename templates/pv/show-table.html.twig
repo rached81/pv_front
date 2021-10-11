@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}{% trans into 'fr' %}Display!{% endtrans %}{% endblock %}
+{% block title %}Display!{% endblock %}
     {% block body %}
 
     {% if content.numberPenaltiesUnpaid == 0  %}
@@ -10,7 +10,7 @@
   <tbody>
     <tr>
       <td>
-      <h6 class="my-0">{% trans into 'fr' %}Numéro CIN{% endtrans %}</h6>
+      <h6 class="my-0">Numéro CIN</h6>
                 <small class="text-muted">ou Carte de Séjour</small>
       </td>
       <td><strong>{{content.numCIN}}</strong> </td>
@@ -23,7 +23,7 @@
     </tr>
      <tr>
         <td>
-          <a class="btn btn-sm btn-primary text-white" href="{{ path ('pv')}}">Retour</a> 
+          {# <a class="btn btn-sm btn-primary text-white" href="{{ path ('pv')}}">Retour</a>  #}
         </td>
         <td>&nbsp; </td>
     </tr>
@@ -37,7 +37,7 @@
   <tbody>
     <tr>
       <td>
-      <h6 class="my-0">{% trans %}Numéro CIN{% endtrans %} </h6>
+      <h6 class="my-0">Numéro CIN </h6>
                 <small class="text-muted">ou Carte de Séjour</small>
       </td>
       <td><strong>{{content.numCIN}}</strong> </td>
@@ -51,7 +51,7 @@
     {% endif %}
     <tr>
       <td>
-      <h6 class="my-0">{% trans %}Nombre des pénalités. {% endtrans %} </h6>
+      <h6 class="my-0">Nombre des pénalités. </h6>
                 <small class="text-muted"> non payer</small></td>
       <td><strong class="ml-2" >{{content.numberPenaltiesUnpaid}}</strong></td>
     </tr>
@@ -90,7 +90,7 @@
     </tr>
     <tr>
         <td colspan = "3">
-          <a class="btn btn-sm btn-primary text-white" href="{{ path ('pv')}}">Retour</a> 
+          {# <a class="btn btn-sm btn-primary text-white" href="{{ path ('pv')}}">Retour</a>  #}
         </td>
     </tr>
 </table>

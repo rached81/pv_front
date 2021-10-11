@@ -70,10 +70,12 @@ dump($locale);
                     // $contentType = 'application/json'
                     $content = $responsePv->getContent();
                     $content = $responsePv->toArray();
-                
+                    dump($content);
+                    // $tpl = ('ar' == $locale) ? 'pv/show-table-ar.html.twig' : 'pv/show-table.html.twig';
                     return $this->render('pv/show-table.html.twig', [
                         'content'=> $content
                 ]);
+                die;
 
                 }else{
                 $this->addFlash(
@@ -88,8 +90,8 @@ dump($locale);
                 }
         }
        
-
-        return $this->render('pv/index.html.twig', [
+        $tpl = ('ar' == $locale) ? 'pv/index-ar.html.twig' : 'pv/index.html.twig';
+        return $this->render($tpl, [
             'form' => $form->createView(),
         ]);
 
