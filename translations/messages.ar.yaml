@@ -2,8 +2,22 @@ Identify Type : نوع الهوية
 # Type d\'identifiant : نوع الهوية
 CIN : ب.ت.و
 Carte de Séjour: بطاقة إقامة
-Numéro CIN : رقم ب.ت.و
+# Numéro CIN : رقم ب.ت.و
 Carte d'identité nationale : رقم بطاقة تعريف وطنية
 Valider: تسجيل
 Consultation !: عرض
 8 chiffres: 8 أعداد
+
+Numéro CIN: رقم بطاقة تعريف وطنية
+ou Carte de Séjour: أو بطاقة إقامة
+Nombre des pénalités : عدد الخطايا
+non payer: غير مستخلصة
+Prénom Nom: الإسم واللقب
+Date de pénalité:  التاريخ
+Montant: المبلغ
+Paiement: الإستخلاص
+TND: دينار
+payer: إستخلاص
+Total des pénalités non payer: مجموع الخطايا الغير مستخلصة
+Retour: رجوع
+Aucune Pénalité impayée n'est signalée dans la base à ce moment.: ليس ناك هناك خطايا غير مستخلصة 

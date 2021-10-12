@@ -1,34 +1,59 @@
 {% extends 'base.html.twig' %}
-{% block title %}Display!{% endblock %}
-    {% block body %}
 
+
+{% block title %}{% trans %}Display!{% endtrans %}{% endblock %}
+    {% block body %}
+    <style>
+.ar table{
+   
+    direction:rtl;
+    
+}
+
+.ar *{
+  text-align: right
+}
+.ar{
+    float:right;
+    padding-right: 15px;
+   
+}
+.ar .msg-info{
+   margin-right: 0px;
+  display: block
+}
+</style>
+    <div class=" {{ lang }} " >
     {% if content.numberPenaltiesUnpaid == 0  %}
-<div class="row ml-2 mt-2  text-responsive">
-  <div class="alert alert-info"> Aucune Pénalité impayée n'est signalée dans la base à ce moment.</div>
+<div class="row  mt-2  text-responsive msg-info">
+  <div class="alert alert-info msg-info"> {% trans %} Aucune Pénalité impayée n'est signalée dans la base à ce moment.{% endtrans %}</div>
 </div>
-<table class="table text-responsive" style="max-width:300px">
+<div class="row col-12">
+<table class="table text-responsive " style="max-width:300px">
   <tbody>
     <tr>
       <td>
-      <h6 class="my-0">Numéro CIN</h6>
-                <small class="text-muted">ou Carte de Séjour</small>
+      <h6 class="my-0">{% trans %}Numéro CIN{% endtrans %}</h6>
+                <small class="text-muted">{% trans %}ou Carte de Séjour{% endtrans %}</small>
       </td>
       <td><strong>{{content.numCIN}}</strong> </td>
     </tr>
     <tr>
       <td>
-      <h6 class="my-0">Nombre des pénalités </h6>
-                <small class="text-muted"> non payer</small></td>
+      <h6 class="my-0">{% trans %}Nombre des pénalités{% endtrans %} </h6>
+                <small class="text-muted">{% trans %}non payer{% endtrans %}</small></td>
       <td><strong class="ml-2" >{{content.numberPenaltiesUnpaid}}</strong></td>
     </tr>
      <tr>
         <td>
-          {# <a class="btn btn-sm btn-primary text-white" href="{{ path ('pv')}}">Retour</a>  #}
+          <a class="btn btn-sm btn-primary text-white" href="{{ path ('pv')}}">{% trans %}Retour{% endtrans %}</a> 
         </td>
         <td>&nbsp; </td>
     </tr>
 
   </tbody>
+  </table>
+  </div>
 {% endif %}
 {% if content.numberPenaltiesUnpaid > 0  %}
 <div class="row ml-2  text-responsive">
@@ -37,22 +62,22 @@
   <tbody>
     <tr>
       <td>
-      <h6 class="my-0">Numéro CIN </h6>
-                <small class="text-muted">ou Carte de Séjour</small>
+      <h6 class="my-0">{% trans %}Numéro CIN{% endtrans %} </h6>
+                <small class="text-muted">{% trans %}ou Carte de Séjour{% endtrans %}</small>
       </td>
       <td><strong>{{content.numCIN}}</strong> </td>
     </tr>
      {% if content.numberPenaltiesUnpaid > 0  %}
     <td>
-      <h6 class="my-0"> Prénom Nom</h6>
+      <h6 class="my-0"> {% trans %}Prénom Nom{% endtrans %}</h6>
       </td>
       <td><strong>{{content.fullName}}</strong> </td>
     </tr>
     {% endif %}
     <tr>
       <td>
-      <h6 class="my-0">Nombre des pénalités. </h6>
-                <small class="text-muted"> non payer</small></td>
+      <h6 class="my-0">{% trans %}Nombre des pénalités{% endtrans %} </h6>
+                <small class="text-muted"> {% trans %}non payer{% endtrans %}</small></td>
       <td><strong class="ml-2" >{{content.numberPenaltiesUnpaid}}</strong></td>
     </tr>
 
@@ -60,40 +85,41 @@
 </table>
 </div>
 <div class="row row-fluid ml-2 mt-2 text-responsive">
-<div class="col-lg-4 col-sm-12">
+<div class="">
 <div class="table-responsive-sm">
-<table class="table table-striped text-responsive">
+<table class="table table-striped text-responsive ">
   <thead>
     <tr>
-      <th>Date de pénalité</th>
-      <th>Montant</th>
-      <th>paiement</th>
+      <th>{% trans %}Date de pénalité{% endtrans %}</th>
+      <th>{% trans %}Montant{% endtrans %}</th>
+      <th>{% trans %}Paiement{% endtrans %}</th>
     </tr>
   </thead>
   <tbody>
   {% for penalty in content.penalties %}
     <tr>
       <td>{{penalty.datePenalty | date("d-m-Y") }}</td>
-      <td>{{penalty.amountPenaty}} &nbsp;TND</td>
-      <td><a type="button" class="btn btn-sm btn-primary" href="#"> payer</a> </td>
+      <td>{{penalty.amountPenaty}} &nbsp;{% trans %}TND{% endtrans %}</td>
+      <td><a type="button" class="btn btn-sm btn-primary" href="#"> {% trans %}payer{% endtrans %}</a> </td>
     </tr>
  {% endfor %}
   </tbody>
  <tr>
       <td>
-            <strong>Total des pénalités non payer</strong>
+            <strong>{% trans %}Total des pénalités non payer{% endtrans %}</strong>
       </td>
       <td>
-            <strong>{{content.totalAmountPenalties}}&nbsp;TND</strong>
+            <strong>{{content.totalAmountPenalties}}&nbsp;{% trans %}TND{% endtrans %}</strong>
       </td>
-      <td><a type="button" class="btn btn-sm btn-primary" href="#"> payer</a> </td>
+      <td><a type="button" class="btn btn-sm btn-primary" href="#"> {% trans %}payer{% endtrans %}</a> </td>
     </tr>
     <tr>
         <td colspan = "3">
-          {# <a class="btn btn-sm btn-primary text-white" href="{{ path ('pv')}}">Retour</a>  #}
+          <a class="btn btn-sm btn-primary text-white" href="{{ path('pv') }}">{% trans %}Retour{% endtrans %}</a> 
         </td>
     </tr>
 </table>
+</div>
 </div>
 </div>
 </div>
