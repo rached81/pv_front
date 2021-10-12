@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="Cym4VJU" resname="Display!">
+        <source>Display!</source>
+        <target>Consultation</target>
+      </trans-unit>
+      <trans-unit id="xrgyx9c" resname="Consultation !">
+        <source>Consultation !</source>
+        <target>__Consultation !</target>
+      </trans-unit>
+      <trans-unit id="WLL3Gad" resname="Identify type">
+        <source>Identify type</source>
+        <target>Type d'identifiant</target>
+      </trans-unit>
+      <trans-unit id="53j5yCI" resname="CIN">
+        <source>CIN</source>
+        <target>CIN</target>
+      </trans-unit>
+      <trans-unit id="3N8BvVJ" resname="Residence permit">
+        <source>Residence permit</source>
+        <target>Carte de Séjour</target>
+      </trans-unit>
+      <trans-unit id="0v1RSd0" resname="Carte d'identité nationale">
+        <source>Carte d'identité nationale</source>
+        <target>__Carte d'identité nationale</target>
+      </trans-unit>
+      <trans-unit id="eW3Rrfm" resname="National ID card">
+        <source>National ID card</source>
+        <target>Carte d'identité nationale</target>
+      </trans-unit>
+      <trans-unit id="YmunqJ." resname="Valider">
+        <source>Valider</source>
+        <target>__Valider</target>
+      </trans-unit>
+      <trans-unit id="kTlcmh6" resname="8 chiffres">
+        <source>8 chiffres</source>
+        <target>__8 chiffres</target>
+      </trans-unit>
+      <trans-unit id="ug905I1" resname="15 chiffres">
+        <source>15 chiffres</source>
+        <target>__15 chiffres</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -19,14 +19,15 @@ class SearchPenaltiesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('identifyType', ChoiceType::class, [
+            ->add('identifyType', ChoiceType::class, [ 
 //                'label' => false,
-                'choices'  => [ 'CIN' => 1, 'Carte de Séjour' => 2],
+                'choices'  => [ 'CIN' => 1 , 'Carte de Séjour' => 2],
                 'expanded' => true,
-                'multiple' => false 
+                'multiple' => false,
+                'translation_domain' => 'forms',
                 ])
-            ->add('identify', TextType::class, [ 'attr' => ['pattern' => '^[0-9]{8}', 'placeholder' => ' 8 chiffres'], 'label' => false, 
-                'required' => true,]
+            ->add('identify', TextType::class, [ 'attr' => ['pattern' => '^[0-9]{8}', 'placeholder' => '8 Chiffres'], 'label' => false, 
+                'required' => true, 'translation_domain' => 'forms']
                 )
             // ->add('captcha', Recaptcha3Type::class, [
             //         // 'constraints' => new Recaptcha3(['message' => ' Please try again or contact with support and provide following code(s): {{ errorCodes }}']),

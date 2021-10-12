@@ -2,7 +2,8 @@ twig:
      form_themes: ['bootstrap_4_layout.html.twig']
      exception_controller: null
      globals:
-        locales: '%locale%'
+        locales: ['fr', 'ar', 'en']
+        # '%locale%'
 #     default_path: '%kernel.project_dir%/templates'
 #     debug: '%kernel.debug%'
 #     strict_variables: '%kernel.debug%'

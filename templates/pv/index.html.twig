@@ -68,16 +68,16 @@ legend.col-form-label {
     <div class="box_penalite">
         <table>
             <tbody><tr>
-                <th><label>Carte d'identité nationale :</label></th>
+                <th><label>{% trans %}Carte d'identité nationale{% endtrans %} :</label></th>
                 <td>
-                    {{ form_row(form.identify) }}
+                    {{ form_row(form.identify)  }}
                 </td>
             </tr>
             </tbody>
         </table>
 
         <div class="btn_submit">
-            <button name="page" class="btn btn-sm btn-primary" value="1" type="submit">Valider</button>
+            <button name="page" class="btn btn-sm btn-primary" value="1" type="submit">{% trans %}Valider{% endtrans %}</button>
         </div>
     </div>
     {{ form_rest(form) }}
@@ -98,11 +98,11 @@ legend.col-form-label {
             console.log(type);
             if(type == 2){
                 $("#search_penalties_identify").prop('pattern', '^[0-9]{15}');
-                $("#search_penalties_identify").prop('placeholder', ' 15 chiffres');
+                $("#search_penalties_identify").prop('placeholder', ' {% trans %}15 chiffres{% endtrans %}');
             }
             if(type == 1){
                 $("#search_penalties_identify").prop('pattern', '^[0-9]{8}');
-                $("#search_penalties_identify").prop('placeholder', ' 8 chiffres');
+                $("#search_penalties_identify").prop('placeholder', ' {% trans %}8 chiffres{% endtrans %}');
             }
 
         })

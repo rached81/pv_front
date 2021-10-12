@@ -12,35 +12,44 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3Validator;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
+
 
 class PvController extends AbstractController
 {
      private $httpClient;
+    //  private $containerBag;
     public function __construct(HttpClientInterface $client)
     {
         $this->httpClient = $client;
+        
     }
-    // /**
-    //  * @Route("/penalties", name="pv", methods={"POST", "GET"})
-    //  */
-
-     /**
-     * @Route(
-     *     "/{locale}/penalties",
-     *     name="pv",
-     *     requirements={
-     *         "locale": "fr|ar|en",
-     *     },
-     *     methods={"POST", "GET"}
-     * )
+    /**
+     * @Route("/penalties", name="pv", methods={"POST", "GET"})
      */
-    public function index($locale, Request $request, TranslatorInterface $translator): Response
-    {
 
-dump($locale); 
+    //  /**
+    //  * @Route(
+    //  *     "/{_locale}/penalties",
+    //  *     name="pv",
+    //  *     requirements={
+    //  *         "_locale": "fr|ar|en",
+    //  *     },
+    //  *     methods={"POST", "GET"}
+    //  * )
+    //  */
+    public function index($_locale, Request $request, TranslatorInterface $translator, ContainerBagInterface $containerBag): Response
+    {
+        // $l = $request->getLocale();
+        // $tl = $containerBag->get('locale');
+        // $t = $containerBag->resolveValue('ar');
+        // //->get('locale');
+        // $dl = $request->getDefaultLocale();
         // phpinfo();
         // die;
-    //    $request->setlocale($locale);
+        // $loacle = $this->getParameter('locale');
+        // dump($locale);
+       $request->setlocale($_locale);
         $paramSearch = new SearchPenalties();
         $form = $this->createForm(SearchPenaltiesType::class, $paramSearch);
        $form->handleRequest($request);
@@ -75,7 +84,6 @@ dump($locale);
                     return $this->render('pv/show-table.html.twig', [
                         'content'=> $content
                 ]);
-                die;
 
                 }else{
                 $this->addFlash(
@@ -90,8 +98,8 @@ dump($locale);
                 }
         }
        
-        $tpl = ('ar' == $locale) ? 'pv/index-ar.html.twig' : 'pv/index.html.twig';
-        return $this->render($tpl, [
+        // $tpl = ('ar' == $locale) ? 'pv/index-ar.html.twig' : 'pv/index.html.twig';
+        return $this->render('pv/index.html.twig', [
             'form' => $form->createView(),
         ]);
 

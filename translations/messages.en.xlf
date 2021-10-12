@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="xrgyx9c" resname="Consultation !">
+        <source>Consultation !</source>
+        <target>__Consultation !</target>
+      </trans-unit>
+      <trans-unit id="0v1RSd0" resname="Carte d'identité nationale">
+        <source>Carte d'identité nationale</source>
+        <target>__Carte d'identité nationale</target>
+      </trans-unit>
+      <trans-unit id="YmunqJ." resname="Valider">
+        <source>Valider</source>
+        <target>__Valider</target>
+      </trans-unit>
+      <trans-unit id="ug905I1" resname="15 chiffres">
+        <source>15 chiffres</source>
+        <target>__15 chiffres</target>
+      </trans-unit>
+      <trans-unit id="kTlcmh6" resname="8 chiffres">
+        <source>8 chiffres</source>
+        <target>__8 chiffres</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

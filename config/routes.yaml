@@ -1,8 +1,12 @@
 pv:    
-    path: /{locale}/penalties
+    path: /{_locale}/penalties
     controller: App\Controller\PvController::index
     requirements:
-    locale: fr|ar|en
+    locale: 
+        -['fr', 'ar', 'en']
+    # '%locale%'
+        # -['fr', 'ar', 'en']
+    # locale: ['fr', 'ar', 'en']
 
 #    prefix:   /{_locale}
 # defaults: { _locale: fr}

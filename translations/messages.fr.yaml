@@ -1,7 +1,8 @@
-# Display!: Consultatipon
-# Identify type: Type d'identifiant
-# CIN : CINN
-# Residence permit: Carte de Séjour
-# Carte d'identité nationale: Carte d'Identité Nationale
-# National ID card: Carte d'identité nationale
-# Valider: Valider!
+Display!: Consultation
+Consultation !: Consultation 
+Identify type: Type d'identifiant
+CIN: CIN
+Carte d'identité nationale: Carte d'Identité Nationale
+Valider: Valider
+8 Chiffres: 8 Chiffres
+15 Chiffres: 15 Chiffres

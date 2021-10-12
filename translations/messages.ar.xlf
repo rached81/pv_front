@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="ar" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="MpGkqCr" resname="Identify Type">
+        <source>Identify Type</source>
+        <target>نوع الهوية</target>
+      </trans-unit>
+      <trans-unit id="53j5yCI" resname="CIN">
+        <source>CIN</source>
+        <target>ب.ت.و</target>
+      </trans-unit>
+      <trans-unit id="VcyRCoq" resname="Carte de Séjour">
+        <source>Carte de Séjour</source>
+        <target>بطاقة إقامة</target>
+      </trans-unit>
+      <trans-unit id="Zn5Z885" resname="Numéro CIN">
+        <source>Numéro CIN</source>
+        <target>رقم ب.ت.و</target>
+      </trans-unit>
+      <trans-unit id="0v1RSd0" resname="Carte d'identité nationale">
+        <source>Carte d'identité nationale</source>
+        <target>رقم بطاقة تعريف وطنية</target>
+      </trans-unit>
+      <trans-unit id="YmunqJ." resname="Valider">
+        <source>Valider</source>
+        <target>تسجيل</target>
+      </trans-unit>
+      <trans-unit id="xrgyx9c" resname="Consultation !">
+        <source>Consultation !</source>
+        <target>عرض</target>
+      </trans-unit>
+      <trans-unit id="kTlcmh6" resname="8 chiffres">
+        <source>8 chiffres</source>
+        <target>8 أعداد</target>
+      </trans-unit>
+      <trans-unit id="ug905I1" resname="15 chiffres">
+        <source>15 chiffres</source>
+        <target>__15 chiffres</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

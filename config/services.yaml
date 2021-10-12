@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 #google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
 parameters:
-    locale: [fr, ar, en]
+    _locale: 'ar'
 services:
     # default configuration for services in *this* file
     _defaults:
