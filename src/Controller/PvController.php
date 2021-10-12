@@ -49,7 +49,8 @@ class PvController extends AbstractController
         // die;
         // $loacle = $this->getParameter('locale');
         // dump($locale);
-       $request->setlocale($_locale);
+    //    $locale =$request->setlocale($_locale);
+       dump($_locale);
         $paramSearch = new SearchPenalties();
         $form = $this->createForm(SearchPenaltiesType::class, $paramSearch);
        $form->handleRequest($request);
@@ -82,7 +83,8 @@ class PvController extends AbstractController
                     dump($content);
                     // $tpl = ('ar' == $locale) ? 'pv/show-table-ar.html.twig' : 'pv/show-table.html.twig';
                     return $this->render('pv/show-table.html.twig', [
-                        'content'=> $content
+                        'content'=> $content, 
+                        'lang' => $_locale
                 ]);
 
                 }else{
@@ -92,6 +94,7 @@ class PvController extends AbstractController
                 );
                     return $this->render('pv/index.html.twig', [
                         'form' => $form->createView(),
+                        'lang' => $_locale
                     ]);
 
 
@@ -101,6 +104,7 @@ class PvController extends AbstractController
         // $tpl = ('ar' == $locale) ? 'pv/index-ar.html.twig' : 'pv/index.html.twig';
         return $this->render('pv/index.html.twig', [
             'form' => $form->createView(),
+            'lang' => $_locale
         ]);
 
 

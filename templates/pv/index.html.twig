@@ -4,47 +4,106 @@
 
 {% block body %}
 <style>
-.text-responsive {
+    .fr .text-responsive, .en .text-responsive {
+    font-size: calc(100% + 1vw + 1vh);
+    }
+    .fr #search_penalties_identifyType> div, .en #search_penalties_identifyType> div{
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+
+    .fr #search_penalties_identifyType, .en #search_penalties_identifyType{
+        margin-left: 3%;
+        margin-bottom: 10px
+    }
+
+    .fr fieldset.form-group, .en fieldset.form-group {
+        border: 1px groove #ddd !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow:  0px 0px 0px 0px #000;
+        box-shadow:  0px 0px 0px 0px #000;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+    }
+
+    .fr legend.form-group, .en legend.form-group {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+    }
+    .fr legend, .en legend{
+        width:auto!important;
+        padding-right:5px;
+        padding-left: 5px;
+        
+        
+    }
+    .fr legend.col-form-label, .en legend.col-form-label {
+        font-weight:bold;
+        color: #323232
+    }
+    .fr .f-dir{
+    float:left
+}
+
+.ar .text-responsive {
   font-size: calc(100% + 1vw + 1vh);
 }
-#search_penalties_identifyType> div{
+.ar #search_penalties_identifyType> div{
     display: inline-block;
     margin-right: 15px;
 }
 
 
-#search_penalties_identifyType{
-    margin-left: 3%;
-    margin-bottom: 10px
+.ar #search_penalties_identifyType{
+    {# margin-right: 3%; #}
+    margin-bottom: 10px;
+    float:right;
 }
-
-fieldset.form-group {
+.ar .form-check-label {
+    margin-bottom: 0;
+    padding-right: 20px;
+}
+.ar fieldset.form-group {
     border: 1px groove #ddd !important;
     padding: 0 1.4em 1.4em 1.4em !important;
-    margin: 0 0 1.5em 0 !important;
+    margin: 0 1.5em 0 0 !important;
     -webkit-box-shadow:  0px 0px 0px 0px #000;
     box-shadow:  0px 0px 0px 0px #000;
     border: 1px solid #ced4da;
     border-radius: .25rem;
+    direction:rtl
 }
 
-legend.form-group {
+.ar legend.form-group {
     font-size: 1.2em !important;
     font-weight: bold !important;
     text-align: left !important;
 }
-legend{
+.ar legend{
     width:auto!important;
     padding-right:5px;
     padding-left: 5px;
+
     
     
 }
-legend.col-form-label {
+.ar legend.col-form-label {
     font-weight:bold;
+    text-align:right;
     color: #323232
+
+}
+.ar .f-dir{
+    float:right!important;
+    direction:rtl;
+    
 }
 </style>
+<div class="{{ lang}}">
+<div class=" f-dir col-5">
 {% for message in app.flashes('danger') %}
     <div class="alert alert-danger">
         {{ message }}
@@ -55,33 +114,31 @@ legend.col-form-label {
         {{ message }}
     </div>
 {% endfor %}
-
-<div class="col-4">
-
     {{ form_start(form) }}
-<div class="box_penalite">
+<div class="box_penalite rox">
     <div class="option_">
     {{ form_row(form.identifyType) }}
     </div>
     </div>
     <div class="clear30"></div>
-    <div class="box_penalite">
-        <table>
-            <tbody><tr>
+    <div class="box_penalite mr-4 pt-2 row">
+         <table class="f-dir">
+            <tbody>
+            <tr>
                 <th><label>{% trans %}Carte d'identité nationale{% endtrans %} :</label></th>
                 <td>
                     {{ form_row(form.identify)  }}
                 </td>
             </tr>
             </tbody>
-        </table>
-
-        <div class="btn_submit">
+        </table> 
+    </div>
+    <div class="btn_submit f-dir row mr-4">
             <button name="page" class="btn btn-sm btn-primary" value="1" type="submit">{% trans %}Valider{% endtrans %}</button>
         </div>
-    </div>
     {{ form_rest(form) }}
     {{ form_end(form) }}
+</div>
 </div>
 
 {% endblock %}
@@ -98,11 +155,11 @@ legend.col-form-label {
             console.log(type);
             if(type == 2){
                 $("#search_penalties_identify").prop('pattern', '^[0-9]{15}');
-                $("#search_penalties_identify").prop('placeholder', ' {% trans %}15 chiffres{% endtrans %}');
+                $("#search_penalties_identify").prop('placeholder', '{% trans %}15 Chiffres{% endtrans %}');
             }
             if(type == 1){
                 $("#search_penalties_identify").prop('pattern', '^[0-9]{8}');
-                $("#search_penalties_identify").prop('placeholder', ' {% trans %}8 chiffres{% endtrans %}');
+                $("#search_penalties_identify").prop('placeholder', '{% trans %}8 Chiffres{% endtrans %}');
             }
 
         })
