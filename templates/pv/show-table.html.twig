@@ -84,15 +84,15 @@
   </tbody>
 </table>
 </div>
-<div class="row row-fluid ml-2 mt-2 text-responsive">
-<div class="">
+<div class="row row-fluid ml-2 mt-2 text-responsive" style="display:block; max-width:500px">
+
 <div class="table-responsive-sm">
 <table class="table table-striped text-responsive ">
   <thead>
     <tr>
       <th>{% trans %}Date de pénalité{% endtrans %}</th>
       <th>{% trans %}Montant{% endtrans %}</th>
-      <th>{% trans %}Paiement{% endtrans %}</th>
+      {# <th>{% trans %}Paiement{% endtrans %}</th> #}
     </tr>
   </thead>
   <tbody>
@@ -100,7 +100,7 @@
     <tr>
       <td>{{penalty.datePenalty | date("d-m-Y") }}</td>
       <td>{{penalty.amountPenaty}} &nbsp;{% trans %}TND{% endtrans %}</td>
-      <td><a type="button" class="btn btn-sm btn-primary" href="#"> {% trans %}payer{% endtrans %}</a> </td>
+      {# <td><a type="button" class="btn btn-sm btn-primary" href="#"> {% trans %}payer{% endtrans %}</a> </td> #}
     </tr>
  {% endfor %}
   </tbody>
@@ -111,15 +111,15 @@
       <td>
             <strong>{{content.totalAmountPenalties}}&nbsp;{% trans %}TND{% endtrans %}</strong>
       </td>
-      <td><a type="button" class="btn btn-sm btn-primary" href="#"> {% trans %}payer{% endtrans %}</a> </td>
+      {# <td><a type="button" class="btn btn-sm btn-primary disabled" href="#"> {% trans %}payer{% endtrans %}</a> </td> #}
     </tr>
     <tr>
-        <td colspan = "3">
+        <td colspan = "2">
           <a class="btn btn-sm btn-primary text-white" href="{{ path('pv') }}">{% trans %}Retour{% endtrans %}</a> 
         </td>
     </tr>
 </table>
-</div>
+
 </div>
 </div>
 </div>

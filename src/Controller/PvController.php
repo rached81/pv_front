@@ -38,7 +38,7 @@ class PvController extends AbstractController
     //  *     methods={"POST", "GET"}
     //  * )
     //  */
-    public function index($_locale, Request $request, TranslatorInterface $translator, ContainerBagInterface $containerBag): Response
+    public function index($_locale, Request $request, TranslatorInterface $translator, ContainerBagInterface $containerBag, Recaptcha3Validator $recaptcha3Validator): Response
     {
         // $l = $request->getLocale();
         // $tl = $containerBag->get('locale');
@@ -56,8 +56,8 @@ class PvController extends AbstractController
        $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            // $score = $recaptcha3Validator->getLastResponse()->getScore();
-            // dump($score);
+            $score = $recaptcha3Validator->getLastResponse()->getScore();
+            dump($score);
             $data = $form->getData();
             $identity = $data->getIdentify();
             $identityType = $data->getIdentifyType();
