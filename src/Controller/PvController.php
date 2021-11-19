@@ -61,9 +61,11 @@ class PvController extends AbstractController
             $data = $form->getData();
             $identity = $data->getIdentify();
             $identityType = $data->getIdentifyType();
-            $url = 'http://127.0.0.1:8080/api/penalite/ncin/'.$identity;
+            $url = 'http://10.0.2.2:2222/api/penalite/ncin/'.$identity;
+            // $url = 'http://127.0.0.1:8080/api/penalite/ncin/'.$identity;
 
-                    try{
+
+            try{
                         $responsePv = $this->httpClient->request(
                             'GET',
                             $url

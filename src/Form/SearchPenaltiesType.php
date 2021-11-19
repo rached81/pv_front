@@ -29,13 +29,13 @@ class SearchPenaltiesType extends AbstractType
             ->add('identify', TextType::class, [ 'attr' => ['pattern' => '^[0-9]{8}', 'placeholder' => '8 Chiffres'], 'label' => false, 
                 'required' => true, 'translation_domain' => 'forms']
                 )
-            ->add('captcha', Recaptcha3Type::class, [
-                     'constraints' => new Recaptcha3(['message' => ' Please try again or contact with support and provide following code(s): {{ errorCodes }}']),
-                    'constraints' => new Recaptcha3(),
+            // ->add('captcha', Recaptcha3Type::class, [
+            //          'constraints' => new Recaptcha3(['message' => ' Please try again or contact with support and provide following code(s): {{ errorCodes }}']),
+            //         'constraints' => new Recaptcha3(),
                  
-                    'action_name' => 'pv',
-                    // 'script_nonce_csp' => $nonceCSP,
-                ])
+            //         'action_name' => 'pv',
+            //         // 'script_nonce_csp' => $nonceCSP,
+            //     ])
                 
                 ;
  

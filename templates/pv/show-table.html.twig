@@ -92,7 +92,7 @@
     <tr>
       <th>{% trans %}Date de pénalité{% endtrans %}</th>
       <th>{% trans %}Montant{% endtrans %}</th>
-      {# <th>{% trans %}Paiement{% endtrans %}</th> #}
+      <th>{% trans %}Paiement{% endtrans %}</th>
     </tr>
   </thead>
   <tbody>
@@ -100,7 +100,7 @@
     <tr>
       <td>{{penalty.datePenalty | date("d-m-Y") }}</td>
       <td>{{penalty.amountPenaty}} &nbsp;{% trans %}TND{% endtrans %}</td>
-      {# <td><a type="button" class="btn btn-sm btn-primary" href="#"> {% trans %}payer{% endtrans %}</a> </td> #}
+      <td><a type="button" class="btn btn-sm btn-primary" href="#"> {% trans %}payer{% endtrans %}</a> </td>
     </tr>
  {% endfor %}
   </tbody>
@@ -111,7 +111,7 @@
       <td>
             <strong>{{content.totalAmountPenalties}}&nbsp;{% trans %}TND{% endtrans %}</strong>
       </td>
-      {# <td><a type="button" class="btn btn-sm btn-primary disabled" href="#"> {% trans %}payer{% endtrans %}</a> </td> #}
+      <td><a type="button" class="btn btn-sm btn-primary disabled" href="#"> {% trans %}payer{% endtrans %}</a> </td>
     </tr>
     <tr>
         <td colspan = "2">
