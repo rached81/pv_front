@@ -56,8 +56,8 @@ class PvController extends AbstractController
        $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $score = $recaptcha3Validator->getLastResponse()->getScore();
-            dump($score);
+            // $score = $recaptcha3Validator->getLastResponse()->getScore();
+            // dump($score);
             $data = $form->getData();
             $identity = $data->getIdentify();
             $identityType = $data->getIdentifyType();
